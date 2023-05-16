@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: antiquewhite;
+    background-color: rgb(241, 184, 110);
     font-family: 'ThaleahFat', sans-serif;
     font-size: 48px;
     color: rgb(247, 130, 52);
@@ -22,7 +22,10 @@ main {
     margin: 100px auto;
     height: 700px;
     width: 1049px;
+    background-color: rgba(8, 15, 116, 0.836);
     background-image: url("images/battle_background.png");
     background-repeat: no-repeat;
     font-family: 'ThaleahFat', sans-serif;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.425);
 }
