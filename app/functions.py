@@ -31,48 +31,43 @@ def start_first(computer, player):
     return player, computer
 
 
-def test_type_attack(attack_amount):
-    if attack_amount > 15:
+def test_type_attack(attack_amount, attacker):
+    if attack_amount == attacker.damage * 2:
         print("CRITICAL")
+    elif attack_amount == attacker.damage * 1.5:
+        print("ADVANTAGE MOVE")
     elif attack_amount == 0:
         print("MISSED")
 
 
-def battle(first, second):
+def battle(first, second, attack_name):
     # first = Grass("bulbasaur", 45, 9, 45)
     # second = Water("bulbasaur", 45, 9, 45)
     test_advantage(first, second)
-    # while True:
-    while True:
-        attack_name = "COMPUTER"
-        if first.owner == "player":
-            attack_name = input("Choose attack >> ")
 
-        # FIRST ATTACK
-        attack_amount = first.attack(attack_name)
-        second.loose_life(attack_amount)
-        test_type_attack(attack_amount)
-        print("ATTACK", first.owner, attack_amount)
-        print("LIFE ", first.owner, first.life)
-        print()
+    print(first.life, first.name)
+    print(second.life, second.name)
 
-        if second.owner == "player":
-            attack_name = input("Choose attack >> ")
-        # SECOND ATTACK
-        attack_amount = second.attack(attack_name)
-        first.loose_life(attack_amount)
-        test_type_attack(attack_amount)
-        print("ATTACK", second.owner, attack_amount)
-        print("LIFE", second.owner, second.life)
-        print()
-
-        if first.life <= 0 or second.life <= 0:
-            break
-        
     
-    test_who_won(first, second)
-        # Let player choose an attack
-        # Test who dies
+    attack(attacker=first, attacked=second, attack_name=attack_name)
+    attack(attacker=second, attacked=first, attack_name=attack_name)
+
+    if first.life <= 0 or second.life <= 0:
+        test_who_won(first, second)
+
+
+def attack(attacker, attacked, attack_name):
+    if attacker.owner == "computer":
+        attack_name = "COMPUTER"
+
+    # FIRST ATTACK
+    attack_amount = attacker.attack(attack_name)
+    attacked.loose_life(attack_amount)
+    test_type_attack(attack_amount, attacker)
+    print("ATTACK", attacker.owner, attack_amount)
+    print("LIFE ", attacker.owner, attacker.life)
+    print()
+
 
 def test_who_won(first, second):
     print(first.life)
@@ -84,6 +79,30 @@ def test_who_won(first, second):
     print("GAME OVER")
 
 
+# def game_logic():
+#     # first = Grass("bulbasaur", 45, 9, 45)
+#     # CREATING POKEMONS
+#     bulbasaur, charmander, squirtle = create_pokemon()
+
+#     # Computer choice
+#     pokemon_list = [bulbasaur, charmander, squirtle]
+#     computer = random.choice(pokemon_list)
+#     computer.owner = "computer"
+
+#     # Person choice
+#     player_choice = input("Pokemon name [0b/1c/2s] >> ")
+#     if player_choice == "0":
+#         player = bulbasaur
+#     elif player_choice == "1":
+#         player = charmander
+#     elif player_choice == "2":
+#         player = squirtle
+#     player.owner = "player"
+
+#     first, second = start_first(computer, player)
+#     battle(first, second)
+
+
 def game_logic():
     # first = Grass("bulbasaur", 45, 9, 45)
     # CREATING POKEMONS
@@ -92,21 +111,21 @@ def game_logic():
     # Computer choice
     pokemon_list = [bulbasaur, charmander, squirtle]
     computer = random.choice(pokemon_list)
-    print(computer)
     computer.owner = "computer"
 
     # Person choice
-    player_choice = input("Pokemon name [0b/1c/2s] >> ")
+    """ player_choice = input("Pokemon name [0b/1c/2s] >> ")
     if player_choice == "0":
         player = bulbasaur
     elif player_choice == "1":
         player = charmander
     elif player_choice == "2":
         player = squirtle
-    player.owner = "player"
+    player.owner = "player" """
+    player = squirtle
 
     first, second = start_first(computer, player)
-    battle(first, second)
+    return first, second
 
 
 def test_advantage(first, second):

@@ -12,6 +12,7 @@ class Pokemon():
         self._speed = speed
         self._advantage = False
         self._owner = ""
+        self._type_attack = []
 
     @property
     def name(self):
@@ -34,6 +35,10 @@ class Pokemon():
         return self._advantage
     
     @property
+    def type_attacks(self):
+        return self._type_attacks
+    
+    @property
     def owner(self):
         return self._owner
     
@@ -47,11 +52,11 @@ class Pokemon():
 
     def attack(self, attack_name):
         print(attack_name, "ATACK")
-        list_choice = [self._damage, self._damage * 1.5, 0]
+        list_choice = [self._damage, self._damage * 2, 0]
         # 10% de chance de acertar crítico (dano dobrado)
         attack = random.choices(list_choice, weights=(0.8, 0.1, 0.1), k=1)[0]
         if self._advantage:
-            return attack * 2
+            return attack * 1.5
         return attack
 
     # pokemon com vantagem ==> dobro de dano e perde meia vida apenas
