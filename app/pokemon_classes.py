@@ -11,6 +11,7 @@ class Pokemon():
         self._damage = damage
         self._speed = speed
         self._advantage = False
+        self._owner = ""
 
     @property
     def name(self):
@@ -31,12 +32,21 @@ class Pokemon():
     @property
     def advantage(self):
         return self._advantage
+    
+    @property
+    def owner(self):
+        return self._owner
+    
+    @owner.setter
+    def owner(self, owner):
+        self._owner = owner
 
     @advantage.setter
     def advantage(self, advantage):
         self._advantage = advantage
 
-    def attack(self):
+    def attack(self, attack_name):
+        print(attack_name, "ATACK")
         list_choice = [self._damage, self._damage * 1.5, 0]
         # 10% de chance de acertar crítico (dano dobrado)
         attack = random.choices(list_choice, weights=(0.8, 0.1, 0.1), k=1)[0]
@@ -57,7 +67,7 @@ class Water(Pokemon):
     def __init__(self, name, life, damage, speed):
         super().__init__(name, life, damage, speed)
         self._category = "water"
-        self._type_attacks = ["Attack 1", "Ataque 2"]
+        self._type_attacks = ["Water Gun", "Hydro Pump"]
 
     @property
     def category(self):
@@ -68,7 +78,7 @@ class Grass(Pokemon):
     def __init__(self, name, life, damage, speed):
         super().__init__(name, life, damage, speed)
         self._category = "grass"
-        self._type_attacks = ["Attack 1", "Ataque 2"]
+        self._type_attacks = ["Vine Whip", "Razor Leaf"]
 
     @property
     def category(self):
@@ -79,7 +89,7 @@ class Fire(Pokemon):
     def __init__(self, name, life, damage, speed):
         super().__init__(name, life, damage, speed)
         self._category = "fire"
-        self._type_attacks = ["Attack 1", "Ataque 2"]
+        self._type_attacks = ["Fire Fang", "Flamethrower"]
 
     @property
     def category(self):

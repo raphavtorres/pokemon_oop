@@ -43,38 +43,68 @@ def battle(first, second):
     # second = Water("bulbasaur", 45, 9, 45)
     test_advantage(first, second)
     # while True:
-    for i in range(5):
-        attack_amount = first.attack()
+    while True:
+        attack_name = "COMPUTER"
+        if first.owner == "player":
+            attack_name = input("Choose attack >> ")
+
+        # FIRST ATTACK
+        attack_amount = first.attack(attack_name)
         second.loose_life(attack_amount)
         test_type_attack(attack_amount)
-        print("ATTACK F:", attack_amount)
-        print("LIFE F:", first.life)
-
-        attack_amount = second.attack()
-        first.loose_life(attack_amount)
-        test_type_attack(attack_amount)
-        print("ATTACK S:", attack_amount)
-        print("LIFE S:", first.life)
+        print("ATTACK", first.owner, attack_amount)
+        print("LIFE ", first.owner, first.life)
         print()
 
+        if second.owner == "player":
+            attack_name = input("Choose attack >> ")
+        # SECOND ATTACK
+        attack_amount = second.attack(attack_name)
+        first.loose_life(attack_amount)
+        test_type_attack(attack_amount)
+        print("ATTACK", second.owner, attack_amount)
+        print("LIFE", second.owner, second.life)
+        print()
+
+        if first.life <= 0 or second.life <= 0:
+            break
+        
+    
+    test_who_won(first, second)
         # Let player choose an attack
         # Test who dies
 
+def test_who_won(first, second):
+    print(first.life)
+    print(second.life)
+    if first.life < second.life:
+        print(second.owner, "WON!")
+    else:
+        print(first.owner, "WON!")
+    print("GAME OVER")
+
 
 def game_logic():
+    # first = Grass("bulbasaur", 45, 9, 45)
     # CREATING POKEMONS
     bulbasaur, charmander, squirtle = create_pokemon()
 
+    # Computer choice
     pokemon_list = [bulbasaur, charmander, squirtle]
     computer = random.choice(pokemon_list)
+    print(computer)
+    computer.owner = "computer"
 
-    person_choice = input("Pokemon name [0b/1c/2s] >> ")
-    if person_choice == "0":
+    # Person choice
+    player_choice = input("Pokemon name [0b/1c/2s] >> ")
+    if player_choice == "0":
         player = bulbasaur
-    elif person_choice == "1":
+    elif player_choice == "1":
         player = charmander
-    elif person_choice == "2":
+    elif player_choice == "2":
         player = squirtle
+    player.owner = "player"
+
     first, second = start_first(computer, player)
     battle(first, second)
 
