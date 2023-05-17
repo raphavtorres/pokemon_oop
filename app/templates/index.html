@@ -8,17 +8,39 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <p>Player: {{ player.name }} - HP: {{ player.life }}</p>
+    <p>Computer: {{ computer.name }} - HP: {{ computer.life }}</p>
     <main>
-        <section id="computer_section">
-            <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="dialog_img">
-            <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Bulbasaur" style="height: 100px" class="pokemon_img">
-        </section>
-        <section id="player_section">
-            <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="dialog_img">
-            <img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/squirtle.gif" alt="Squirtle" style="height: 100px" class="pokemon_img">
-        </section>  
+        <div id="container">
+            <section id="computer_section">
+                <div>
+                    <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="hp_img">
+                </div>
+                <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="hp_img">
+                <img src="{{ url_for('static', filename='images/bulb_back_rm.png') }}" alt="Squirtle" style="height: 200px" class="pokemon_img">
+                
+                <!-- <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Bulbasaur" style="height: 100px" class="pokemon_img"> -->
+            </section>
+            <section id="player_section">
+                <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="hp_img">
+                <!-- <img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/squirtle.gif" alt="Squirtle" style="height: 100px" class="pokemon_img"> -->
+                <img src="{{ url_for('static', filename='images/bulb_back_rm.png') }}" alt="Squirtle" style="height: 200px" class="pokemon_img">
+            </section>
+            <section id="dialog-section">
+                <div id="dialog_div">
+                    <h1>DIALOG</h1>
+                </div>
+                <div id="buttons_div">
+                    <form action="/" method="POST">
+                        {% for attack in player.type_attacks%}
+                        <input type="submit" value="{{ attack }}" name="attack_btn">
+                        {% endfor %}
+                    </form>
+                </div>
+            </section>
+        </div>  
     </main>
-    <footer>
+    <!-- <footer>
         <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Bulbasaur" style="height: 100px">
         <img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/bulbasaur.gif" alt="Bulbasaur" style="height: 100px">
 
@@ -27,6 +49,6 @@
 
         <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/charmander.gif" alt="Charmander" style="height: 100px">
         <img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/charmander.gif" alt="Charmander" style="height: 100px">
-    </footer>
+    </footer> -->
 </body>
 </html>
