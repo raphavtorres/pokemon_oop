@@ -18,6 +18,7 @@ body {
     text-shadow: 2px 3px #ff0000;
     max-height: 100vh;
 }
+
 main {
     margin: 100px auto;
     height: 700px;
@@ -28,4 +29,34 @@ main {
     font-family: 'ThaleahFat', sans-serif;
     border-radius: 20px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.425);
+}
+
+#player_section, #computer_section {
+    height: 50%;
+}
+
+section img {
+    position: relative;
+}
+
+#computer_section .pokemon_img {
+    right: 0;
+    margin-right: 5em;
+    margin-top: 3.5em;
+}
+
+#player_section .pokemon_img {
+    left: 0;
+    margin-left: 6em;
+    margin-top: 1em;
+}
+
+#player_section .dialog_img {
+    height: 130px;
+    left: 0;
+}
+
+#computer_section .dialog_img {
+    height: 130px;
+    right: 0;
 }
