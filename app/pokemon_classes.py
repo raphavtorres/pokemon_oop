@@ -14,29 +14,36 @@ class Pokemon():
 
     @property
     def name(self):
-        return self._name 
-    
+        return self._name
+
     @property
     def life(self):
         return self._life
-    
+
     @property
     def damage(self):
         return self._damage
-    
+
     @property
     def speed(self):
         return self._speed
 
+    @property
+    def advantage(self):
+        return self._advantage
+
+    @advantage.setter
+    def advantage(self, advantage):
+        self._advantage = advantage
+
     def attack(self):
-        list_choice = [self._damage, self._damage * 1.5]
+        list_choice = [self._damage, self._damage * 1.5, 0]
         # 10% de chance de acertar crítico (dano dobrado)
-        attack = random.choices(list_choice, weights=(90, 10), k=1)
+        attack = random.choices(list_choice, weights=(0.8, 0.1, 0.1), k=1)[0]
         if self._advantage:
             return attack * 2
         return attack
 
-    
     # pokemon com vantagem ==> dobro de dano e perde meia vida apenas
     def loose_life(self, damage_received):
         if self._advantage:
@@ -49,49 +56,31 @@ class Pokemon():
 class Water(Pokemon):
     def __init__(self, name, life, damage, speed):
         super().__init__(name, life, damage, speed)
-        self.type_attacks = ["Attack 1", "Ataque 2"]
+        self._category = "water"
+        self._type_attacks = ["Attack 1", "Ataque 2"]
+
+    @property
+    def category(self):
+        return self._category
 
 
 class Grass(Pokemon):
     def __init__(self, name, life, damage, speed):
         super().__init__(name, life, damage, speed)
-        self.type_attacks = ["Attack 1", "Ataque 2"]
+        self._category = "grass"
+        self._type_attacks = ["Attack 1", "Ataque 2"]
+
+    @property
+    def category(self):
+        return self._category
 
 
 class Fire(Pokemon):
     def __init__(self, name, life, damage, speed):
         super().__init__(name, life, damage, speed)
-        self.type_attacks = ["Attack 1", "Ataque 2"]
+        self._category = "fire"
+        self._type_attacks = ["Attack 1", "Ataque 2"]
 
-
-def game_logic():
-    # CREATING POKEMONS 
-    bulbasaur = Grass("bulbasaur", 45, 9, 45)
-    charmander = Fire("charmander", 39, 10, 65)
-    squirtle = Water("squirtle", 44, 8, 43)
-
-    pokemon_list = [bulbasaur, charmander, squirtle]
-    computer = random.choice(pokemon_list).name
-
-    person_choice = input("Pokemon name [0b/1c/2s] >> ")
-    if person_choice == "0":
-        player = bulbasaur
-    elif person_choice == "1":
-        player = charmander
-    elif person_choice == "2":
-        player = squirtle
-
-    # Pokemon mais rapido ataca primeiro
-    if computer.speed > player.speed:
-        # computer starts first
-        ...
-    # Velocidade igual == aleatorio
-    elif computer.speed == player.speed:
-        # random start
-        ...
-    else:
-        #player starts first
-        ...
-
-
-game_logic()
+    @property
+    def category(self):
+        return self._category
