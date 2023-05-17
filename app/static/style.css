@@ -40,9 +40,9 @@ section img {
 }
 
 #computer_section .pokemon_img {
-    right: 0;
-    margin-right: 5em;
-    margin-top: 3.5em;
+    left: 0;
+    padding: 0;
+    margin-right: 4em;
 }
 
 #player_section .pokemon_img {
