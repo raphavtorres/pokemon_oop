@@ -23,32 +23,47 @@ def index():
         print(computer.name)
         computer.battle_counter = 1
         attack_name = random.choice(computer.type_attacks)
-        attack(computer, player, attack_name)
+        dialog_attack = attack(computer, player, attack_name)
+    else:
+        dialog_attack = ["PLAYER FIRST! DO YOUR MOVE..."]
 
     if request.method == 'POST':
+        # PLAYER ATTACK
         attack_name = request.form['attack_btn']
-        attack(player, computer, attack_name)
+        dialog_attack = attack(player, computer, attack_name)
 
+        # COMPUTER ATTACK
         attack_name = random.choice(computer.type_attacks)
-        attack(computer, player, attack_name)
+        dialog_attack_pc = attack(computer, player, attack_name)
+        for msg in dialog_attack_pc:
+            dialog_attack.append(msg)
 
-    # TEST IF SOMEONE WON/LOOSE
-    if first.life <= 0 or second.life <= 0:
-        test_who_won(first, second)
+        # TEST IF SOMEONE WON/LOOSE
+        if first.life <= 0 or second.life <= 0:
+            dialog_test_won = test_who_won(first, second)
+            for msg in dialog_test_won:
+                dialog_attack.append(msg)
 
-    dialog = ["1", "2", "3", "4", "5", "6"]
+        return render_template(
+            'index.html', computer=computer, player=player, dialog=dialog_attack
+        )
+
+    # dialog = ["Computer TURN", "WATER GUN ATTACK", "Computer DAMAGE = 8"]
     return render_template(
-        'index.html', computer=computer, player=player, dialog=dialog
+        'index.html', computer=computer, player=player, dialog=dialog_attack
     )
 
 
-# @app.route('/battle/', methods=["POST"])
-# def battle_app():
-#     if request.method == 'POST':
-#         battle()
-#     return render_template(
-#         'index.html', computer=computer, player=player
-#     )
+@app.route('/battle/', methods=["GET", "POST"])
+def battle_app():
+    if request.method == 'POST':
+        return render_template(
+            'index.html'
+        )
+    else:
+        return render_template(
+            'character.html'
+        )
 
 if __name__ == "__main__":
     app.run(debug=True)

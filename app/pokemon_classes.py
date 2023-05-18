@@ -14,6 +14,7 @@ class Pokemon():
         self._owner = ""
         self._type_attack = []
         self._battle_counter = 0
+        self._turn = False
 
     @property
     def battle_counter(self):

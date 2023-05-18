@@ -5,7 +5,7 @@ from pokemon_classes import Fire, Grass, Water
 
 def create_pokemon():
     """Creates the objects of pokemon"""
-    bulbasaur = Grass("bulbasaur", 45, 9, 45)
+    bulbasaur = Grass("bulbasaur", 42, 9, 45)
     charmander = Fire("charmander", 39, 10, 65)
     squirtle = Water("squirtle", 44, 8, 43)
     return bulbasaur, charmander, squirtle
@@ -32,33 +32,52 @@ def start_first(computer, player):
 
 
 def test_type_attack(attack_amount, attacker):
+    attack_type = ""
     if attack_amount == attacker.damage * 2:
-        print("CRITICAL")
+        attack_type = f"{attacker.owner} HIT CRITICAL ATTACK"
     elif attack_amount == attacker.damage * 1.5:
-        print("ADVANTAGE MOVE")
+       attack_type = f"{attacker.owner} HAS ADVANTAGE MOVE"
     elif attack_amount == 0:
-        print("MISSED")
+        attack_type = f"{attacker.owner} MISSED 😿"
+    return attack_type
+
+
+def test_life_amount(attacker, attacked, dialog_attack):
+    msg = ""
+    if attacker.life <= 0 or attacked.life <= 0:
+        dialog_test_won = test_who_won(attacker, attacked)
+        for msg in dialog_test_won:
+            dialog_attack.append(msg)
+    elif attacker.owner == "computer":
+        dialog_attack.append("YOUR TURN...")
+    return dialog_attack
 
 
 def attack(attacker, attacked, attack_name):
-    print("OWNER:", attacker.owner)
+    dialog_attack = []
+    dialog_attack.append(f"{attacker.owner.upper()} ATTACKING!")
 
-    # FIRST ATTACK
     attack_amount = attacker.attack(attack_name)
     attacked.loose_life(attack_amount)
-    test_type_attack(attack_amount, attacker)
-    print(attacker.owner, "DAMAGE =", attack_amount)
-    print()
+    attack_type = test_type_attack(attack_amount, attacker)
+    dialog_attack.append(attack_type)
+    dialog_attack.append(f"{attacker.owner.upper()} GAVE {attack_amount} OF DAMAGE!")
+
+    dialog_attack = test_life_amount(attacker, attacked, dialog_attack)
+
+    return dialog_attack
 
 
 def test_who_won(first, second):
-    print(first.life)
-    print(second.life)
+    dialog = []
+    dialog.append(f"{first.owner} = {first.life}")
+    dialog.append(f"{second.owner} = {second.life}")
     if first.life < second.life:
-        print(second.owner, "WON!")
+        dialog.append(f"{second.owner} WON!")
     else:
-        print(first.owner, "WON!")
-    print("GAME OVER")
+        dialog.append(f"{first.owner} WON!")
+    dialog.append("GAME OVER!")
+    return dialog
 
 
 def game_logic():
