@@ -105,6 +105,11 @@ section img {
     margin-left: 4em;
 }
 
+#dialog_parag {
+    text-align: center;
+    margin-left: 1em;
+}
+
 input[type=submit] {
     height: 80px;
     width: 190px;
