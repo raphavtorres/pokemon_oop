@@ -13,18 +13,16 @@
     <main>
         <div id="container">
             <section id="computer_section">
-                <div>
-                    <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="hp_img">
-                </div>
                 <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="hp_img">
-                <img src="{{ url_for('static', filename='images/bulb_back_rm.png') }}" alt="Squirtle" style="height: 200px" class="pokemon_img">
+                <!-- <img src="{{ url_for('static', filename='images/bulb_back_rm.png') }}" alt="Squirtle" style="height: 200px" class="pokemon_img"> -->
                 
-                <!-- <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Bulbasaur" style="height: 100px" class="pokemon_img"> -->
+                <img src="{{ url_for('static', filename='images/bulbasaur_front.gif') }}" alt="Bulbasaur" style="height: 100px" class="pokemon_img">
             </section>
             <section id="player_section">
                 <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="hp_img">
-                <!-- <img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/squirtle.gif" alt="Squirtle" style="height: 100px" class="pokemon_img"> -->
-                <img src="{{ url_for('static', filename='images/bulb_back_rm.png') }}" alt="Squirtle" style="height: 200px" class="pokemon_img">
+                <!-- <img src="{{ url_for('static', filename='images/bulb_back_rm.png') }}" alt="Squirtle" style="height: 200px" class="pokemon_img"> -->
+
+                <img src="{{ url_for('static', filename='images/charmander_back.gif') }}" alt="Squirtle" style="height: 100px" class="pokemon_img">
             </section>
             <section id="dialog-section">
                 <div id="dialog_div">
@@ -40,15 +38,5 @@
             </section>
         </div>  
     </main>
-    <!-- <footer>
-        <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Bulbasaur" style="height: 100px">
-        <img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/bulbasaur.gif" alt="Bulbasaur" style="height: 100px">
-
-        <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/squirtle.gif" alt="Squirtle" style="height: 100px">
-        <img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/squirtle.gif" alt="Squirtle" style="height: 100px">
-
-        <img src="https://img.pokemondb.net/sprites/black-white/anim/normal/charmander.gif" alt="Charmander" style="height: 100px">
-        <img src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/charmander.gif" alt="Charmander" style="height: 100px">
-    </footer> -->
 </body>
 </html>
