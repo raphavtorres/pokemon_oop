@@ -40,32 +40,14 @@ def test_type_attack(attack_amount, attacker):
         print("MISSED")
 
 
-def battle(first, second, attack_name):
-    # first = Grass("bulbasaur", 45, 9, 45)
-    # second = Water("bulbasaur", 45, 9, 45)
-    test_advantage(first, second)
-
-    print(first.life, first.name)
-    print(second.life, second.name)
-
-    
-    attack(attacker=first, attacked=second, attack_name=attack_name)
-    attack(attacker=second, attacked=first, attack_name=attack_name)
-
-    if first.life <= 0 or second.life <= 0:
-        test_who_won(first, second)
-
-
 def attack(attacker, attacked, attack_name):
-    if attacker.owner == "computer":
-        attack_name = "COMPUTER"
+    print("OWNER:", attacker.owner)
 
     # FIRST ATTACK
     attack_amount = attacker.attack(attack_name)
     attacked.loose_life(attack_amount)
     test_type_attack(attack_amount, attacker)
-    print("ATTACK", attacker.owner, attack_amount)
-    print("LIFE ", attacker.owner, attacker.life)
+    print(attacker.owner, "DAMAGE =", attack_amount)
     print()
 
 
@@ -77,30 +59,6 @@ def test_who_won(first, second):
     else:
         print(first.owner, "WON!")
     print("GAME OVER")
-
-
-# def game_logic():
-#     # first = Grass("bulbasaur", 45, 9, 45)
-#     # CREATING POKEMONS
-#     bulbasaur, charmander, squirtle = create_pokemon()
-
-#     # Computer choice
-#     pokemon_list = [bulbasaur, charmander, squirtle]
-#     computer = random.choice(pokemon_list)
-#     computer.owner = "computer"
-
-#     # Person choice
-#     player_choice = input("Pokemon name [0b/1c/2s] >> ")
-#     if player_choice == "0":
-#         player = bulbasaur
-#     elif player_choice == "1":
-#         player = charmander
-#     elif player_choice == "2":
-#         player = squirtle
-#     player.owner = "player"
-
-#     first, second = start_first(computer, player)
-#     battle(first, second)
 
 
 def game_logic():
@@ -123,6 +81,7 @@ def game_logic():
         player = squirtle
     player.owner = "player" """
     player = squirtle
+    player.owner = "player"
 
     first, second = start_first(computer, player)
     return first, second

@@ -46,11 +46,11 @@ class Pokemon():
     @property
     def type_attacks(self):
         return self._type_attacks
-  
+
     @property
     def owner(self):
         return self._owner
-    
+
     @owner.setter
     def owner(self, owner):
         self._owner = owner
@@ -60,7 +60,7 @@ class Pokemon():
         self._advantage = advantage
 
     def attack(self, attack_name):
-        print(attack_name, "ATACK")
+        print(attack_name.upper(), "ATTACK")
         list_choice = [self._damage, self._damage * 2, 0]
         # 10% de chance de acertar crítico (dano dobrado)
         attack = random.choices(list_choice, weights=(0.8, 0.1, 0.1), k=1)[0]
