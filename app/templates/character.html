@@ -22,10 +22,22 @@
             width: 250px;
             background-color: white;
             border-radius: 10px;
+            margin-top: 10rem;
+        }
+
+        .poke_box .div_img {
+            display: flex;
+        }
+
+        .poke_box img {
+            height: 100px;
+            margin: auto;
+            margin-top: 30px;
         }
 
         #charmander {
             left: 0;
+            margin-left: 20rem;
         }
 
         #bulbasaur {
@@ -35,19 +47,58 @@
 
         #squirtle {
             right: 0;
+            margin-right: 20rem;
         }
+
+        .div_poke_name {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .div_choose_btn {
+            display: flex;
+            height: 80%!important;
+        }
+
+        .choose_btn {
+            margin: auto;
+        }
+
     </style>
 </head>
 <body>
     <div id="cards_box">
         <div id="charmander" class="poke_box">
-        
+            <div class="div_img">
+                <img src="{{ url_for('static', filename='images/charmander_front.gif') }}" alt="">
+            </div>
+            <div class="div_poke_name">
+                <p>charmander</p>
+            </div>
+            
         </div>
+
         <div id="bulbasaur" class="poke_box">
-        
+            <div class="div_img">
+                <img src="{{ url_for('static', filename='images/bulbasaur_front.gif') }}" alt="">
+            </div>
+            <div class="div_poke_name">
+                <p>Bulbasaur</p>
+            </div>
         </div>
+
         <div id="squirtle" class="poke_box">
-        
+            <div class="div_img">
+                <img src="{{ url_for('static', filename='images/squirtle_front.gif') }}" alt="">
+            </div>
+            <div class="div_poke_name">
+                <p>squirtle</p>
+            </div>
+            <form action="/" method="POST">
+                <div class="div_choose_btn">
+                    <input type="submit" value="CHOOSE" class="choose_btn">
+                </div>
+            </form>
         </div>
     </div>
     <main>
