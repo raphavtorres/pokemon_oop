@@ -15,12 +15,12 @@ body {
     font-size: 48px;
     color: rgb(247, 130, 52);
     text-shadow: 2px 3px red;
-    max-height: 100vh;
 }
 
 main {
     margin: 50px auto;
     height: 700px;
+    max-height: 100vh;
     width: 1049px;
     background-color: rgba(8, 15, 116, 0.836);
     background-image: url("images/battle_background.png");
@@ -56,18 +56,21 @@ section img {
     margin-left: 6.3em;
 }
 
+.hp_img {
+    height: 110px;
+}
+
 #computer_section .hp_img {
-    height: 80px;
     right: 0;
-    margin-top: 2.6em;
-    margin-right: 2em;
+    margin-top: 2.2em;
+    margin-right: 1.5em;
 
 }
 
 #player_section .hp_img {
-    height: 80px;
     left: 0;
-    margin-left: 2em;
+    margin-top: -0.8em;
+    margin-left: 1.5em;
 }
 
 #dialog-section {
@@ -80,6 +83,26 @@ section img {
     justify-content: center;
     align-items: center;
     width: 60%;
+}
+
+.text_hp {
+    position: absolute;
+    z-index: 2;
+    font-size: 28px;
+    text-shadow: none;
+    color: #ff5100;
+}
+
+#text_hp_computer {
+    right: 0;
+    margin-top: 4.8em;
+    margin-right: 3.4em;
+}
+
+#text_hp_player {
+    left: 0;
+    margin-top: -0.4em;
+    margin-left: 4em;
 }
 
 input[type=submit] {

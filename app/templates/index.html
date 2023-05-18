@@ -8,21 +8,33 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <p>Player: {{ player.name }} - HP: {{ player.life }}</p>
-    <p>Computer: {{ computer.name }} - HP: {{ computer.life }}</p>
     <main>
         <div id="container">
             <section id="computer_section">
+                <p id="text_hp_computer" class="text_hp">Computer: {{ computer.name }} <br> HP: {{ computer.life }}</p>
                 <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="hp_img">
-                <!-- <img src="{{ url_for('static', filename='images/bulb_back_rm.png') }}" alt="Squirtle" style="height: 200px" class="pokemon_img"> -->
+
+                {% if computer.name == "bulbasaur" %}
+                    <img src="{{ url_for('static', filename='images/bulbasaur_front.gif') }}" alt="Bulbasaur" style="height: 100px" class="pokemon_img">
+                {% elif computer.name == "charmander" %}
+                    <img src="{{ url_for('static', filename='images/charmander_front.gif') }}" alt="Bulbasaur" style="height: 100px" class="pokemon_img">
+                {% elif computer.name == "squirtle" %}
+                    <img src="{{ url_for('static', filename='images/squirtle_front.gif') }}" alt="Bulbasaur" style="height: 100px" class="pokemon_img">            
+                {% endif %}
                 
-                <img src="{{ url_for('static', filename='images/bulbasaur_front.gif') }}" alt="Bulbasaur" style="height: 100px" class="pokemon_img">
             </section>
             <section id="player_section">
+                <p id="text_hp_player"  class="text_hp">Player: {{ player.name }} <br> HP: {{ player.life }}</p>
                 <img src="{{ url_for('static', filename='images/pokemon-dialogue-box.png') }}" alt="" class="hp_img">
-                <!-- <img src="{{ url_for('static', filename='images/bulb_back_rm.png') }}" alt="Squirtle" style="height: 200px" class="pokemon_img"> -->
 
-                <img src="{{ url_for('static', filename='images/charmander_back.gif') }}" alt="Squirtle" style="height: 100px" class="pokemon_img">
+                {% if player.name == "bulbasaur" %}
+                    <img src="{{ url_for('static', filename='images/bulbasaur_back.gif') }}" alt="Bulbasaur" style="height: 100px" class="pokemon_img">
+                {% elif player.name == "charmander" %}
+                    <img src="{{ url_for('static', filename='images/charmander_back.gif') }}" alt="Bulbasaur" style="height: 100px" class="pokemon_img">
+                {% elif player.name == "squirtle" %}
+                    <img src="{{ url_for('static', filename='images/squirtle_back.gif') }}" alt="Bulbasaur" style="height: 100px" class="pokemon_img">            
+                {% endif %}
+
             </section>
             <section id="dialog-section">
                 <div id="dialog_div">
