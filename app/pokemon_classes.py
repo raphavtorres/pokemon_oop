@@ -13,6 +13,15 @@ class Pokemon():
         self._advantage = False
         self._owner = ""
         self._type_attack = []
+        self._battle_counter = 0
+
+    @property
+    def battle_counter(self):
+        return self._battle_counter
+
+    @battle_counter.setter
+    def battle_counter(self, value):
+        self._battle_counter = value
 
     @property
     def name(self):
@@ -33,11 +42,11 @@ class Pokemon():
     @property
     def advantage(self):
         return self._advantage
-    
+
     @property
     def type_attacks(self):
         return self._type_attacks
-    
+  
     @property
     def owner(self):
         return self._owner

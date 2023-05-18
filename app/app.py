@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import random
 
 from functions import game_logic, battle
 
@@ -9,7 +10,12 @@ first, second = game_logic()
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    if request.method == 'POST':
+    print(first.owner)
+    if first == "computer" and first.battle_counter == 0:
+        first.battle_counter = 1
+        attack_name = random.choice(first.type_attacks)
+        battle(first, second, attack_name)
+    elif request.method == 'POST':
         attack_name = request.form['attack_btn']
         battle(first, second, attack_name)
 
