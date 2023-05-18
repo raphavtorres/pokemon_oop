@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>CHARACTER SELECTION</title>
+    <style>
+        html, body {
+            background-color: rgb(107, 82, 49);
+        }
+
+        main {
+            filter: brightness(0.6);
+        }
+
+        .poke_box {
+            z-index: 2;
+            position: absolute;
+            height: 400px;
+            width: 250px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        #charmander {
+            left: 0;
+        }
+
+        #bulbasaur {
+            left: 0;
+            margin-left: 50rem;
+        }
+
+        #squirtle {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="cards_box">
+        <div id="charmander" class="poke_box">
+        
+        </div>
+        <div id="bulbasaur" class="poke_box">
+        
+        </div>
+        <div id="squirtle" class="poke_box">
+        
+        </div>
+    </div>
+    <main>
+        
+    </main>
+
+</body>
+</html>

@@ -58,16 +58,16 @@
         array = array.replace("]", "");
         dialog_array = array.split(',')
                 
-        function print_dialog(counter) {
+        function printDialog(counter) {
             setTimeout(() => { 
                 dialog_parag.innerHTML = dialog_array[counter];
                 counter++;
                 if (counter < dialog_array.length) {    
-                    print_dialog(counter); 
-                }  
+                    printDialog(counter); 
+                }
             }, 2000);
         }
-        print_dialog(0);
+        printDialog(0);
     </script>
 </body>
 </html>
