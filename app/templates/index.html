@@ -56,22 +56,16 @@
         array = array.replace(/&#39;/gi, "");
         array = array.replace("[", "");
         array = array.replace("]", "");
-
         dialog_array = array.split(',')
-        console.log(dialog_array);
-        console.log(dialog_array[0])
-        console.log(dialog_array[1])
-        console.log(dialog_array[2])
                 
         function print_dialog(counter) {
-            setTimeout(() => {
-                console.log(counter);  
+            setTimeout(() => { 
                 dialog_parag.innerHTML = dialog_array[counter];
                 counter++;
                 if (counter < dialog_array.length) {    
                     print_dialog(counter); 
                 }  
-            }, 3000);
+            }, 2000);
         }
         print_dialog(0);
     </script>
