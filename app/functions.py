@@ -62,25 +62,16 @@ def test_who_won(first, second):
 
 
 def game_logic():
-    # first = Grass("bulbasaur", 45, 9, 45)
-    # CREATING POKEMONS
-    bulbasaur, charmander, squirtle = create_pokemon()
-
     # Computer choice
-    pokemon_list = [bulbasaur, charmander, squirtle]
-    computer = random.choice(pokemon_list)
+    bulbasaur_comp, charmander_comp, squirtle_comp = create_pokemon()
+    pokemon_list_computer = [bulbasaur_comp, charmander_comp, squirtle_comp]
+    computer = random.choice(pokemon_list_computer)
     computer.owner = "computer"
 
     # Person choice
-    """ player_choice = input("Pokemon name [0b/1c/2s] >> ")
-    if player_choice == "0":
-        player = bulbasaur
-    elif player_choice == "1":
-        player = charmander
-    elif player_choice == "2":
-        player = squirtle
-    player.owner = "player" """
-    player = squirtle
+    bulbasaur_player, charmander_player, squirtle_player = create_pokemon()
+    # pokemon_list_player = [bulbasaur_player, charmander_player, squirtle_player]
+    player = squirtle_player
     player.owner = "player"
 
     first, second = start_first(computer, player)

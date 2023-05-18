@@ -35,8 +35,10 @@ def index():
     # TEST IF SOMEONE WON/LOOSE
     if first.life <= 0 or second.life <= 0:
         test_who_won(first, second)
+
+    dialog = ["Player Fight", "Disaster", "Bubble gum"]
     return render_template(
-        'index.html', computer=computer, player=player
+        'index.html', computer=computer, player=player, dialog=dialog
     )
 
 

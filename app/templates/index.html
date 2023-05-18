@@ -38,7 +38,7 @@
             </section>
             <section id="dialog-section">
                 <div id="dialog_div">
-                    <h1>DIALOG</h1>
+                    <p id="dialog_parag"></p>
                 </div>
                 <div id="buttons_div">
                     <form action="/" method="POST">
@@ -50,5 +50,40 @@
             </section>
         </div>  
     </main>
+    <script>
+        var dialog_parag = document.getElementById("dialog_parag");
+        var array = '{{ dialog }}';
+        array = array.replace(/&#39;/gi, "");
+        array = array.replace("[", "");
+        array = array.replace("]", "");
+
+        dialog_array = array.split(',')
+        console.log(dialog_array);
+        console.log(dialog_array[0])
+        console.log(dialog_array[1])
+        console.log(dialog_array[2])
+                
+        function print_dialog(counter) {
+            setTimeout(() => {
+                console.log(counter);  
+                dialog_parag.innerHTML = dialog_array[counter];
+                counter++;
+                if (counter < dialog_array.length) {    
+                    print_dialog(counter); 
+                }  
+            }, 3000);
+        }
+        print_dialog(0);
+        // setTimeout(() => {
+        //     dialog_parag.innerHTML = dialog_array[0];
+        //     setTimeout(() => {
+        //         dialog_parag.innerHTML = dialog_array[1];
+        //         setTimeout(() => {
+        //             dialog_parag.innerHTML = dialog_array[2];  
+        //         }, 5000);
+        //     }, 5000);
+        // }, 5000);
+
+    </script>
 </body>
 </html>
