@@ -1,0 +1,64 @@
+html, body {
+    background-color: rgb(107, 82, 49);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+main {
+    margin-top: 30px;
+    filter: brightness(0.6);
+}
+
+#cards_box {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 400px;
+    z-index: 2;
+    position: absolute;
+}
+
+.poke_box {
+    height: 400px;
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.poke_box .div_img {
+    display: flex;
+}
+
+.poke_box img {
+    height: 100px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#charmander {
+    margin-right: -20%;
+}
+
+#bulbasaur {
+    margin-left: -10%;
+    margin-right: -10%;
+}
+
+#squirtle {
+    margin-left: -20%;
+}
+
+.div_poke_name {
+    margin: 40px 0px;
+    text-align: center;
+}
+
+.div_choose_btn {
+    display: flex;
+}
+
+.choose_btn {
+    margin: auto;
+}

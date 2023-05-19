@@ -5,66 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='battle.css') }}">
     <title>CHARACTER SELECTION</title>
-    <style>
-        html, body {
-            background-color: rgb(107, 82, 49);
-        }
-
-        main {
-            filter: brightness(0.6);
-        }
-
-        .poke_box {
-            z-index: 2;
-            position: absolute;
-            height: 400px;
-            width: 250px;
-            background-color: white;
-            border-radius: 10px;
-            margin-top: 10rem;
-        }
-
-        .poke_box .div_img {
-            display: flex;
-        }
-
-        .poke_box img {
-            height: 100px;
-            margin: auto;
-            margin-top: 30px;
-        }
-
-        #charmander {
-            left: 0;
-            margin-left: 20rem;
-        }
-
-        #bulbasaur {
-            left: 0;
-            margin-left: 50rem;
-        }
-
-        #squirtle {
-            right: 0;
-            margin-right: 20rem;
-        }
-
-        .div_poke_name {
-            margin-top: 30px;
-            text-align: center;
-        }
-
-        .div_choose_btn {
-            display: flex;
-            height: 80%!important;
-        }
-
-        .choose_btn {
-            margin: auto;
-        }
-
-    </style>
 </head>
 <body>
     <div id="cards_box">
@@ -75,7 +17,11 @@
             <div class="div_poke_name">
                 <p>charmander</p>
             </div>
-            
+            <form action="/" method="POST">
+                <div class="div_choose_btn">
+                    <input type="submit" name="charmander" value="choose" class="choose_btn">
+                </div>
+            </form>
         </div>
 
         <div id="bulbasaur" class="poke_box">
@@ -85,6 +31,11 @@
             <div class="div_poke_name">
                 <p>Bulbasaur</p>
             </div>
+            <form action="/" method="POST">
+                <div class="div_choose_btn">
+                    <input type="submit" name="bulbasaur" value="choose" class="choose_btn">
+                </div>
+            </form>
         </div>
 
         <div id="squirtle" class="poke_box">
@@ -96,7 +47,7 @@
             </div>
             <form action="/" method="POST">
                 <div class="div_choose_btn">
-                    <input type="submit" value="CHOOSE" class="choose_btn">
+                    <input type="submit" name="squirtle" value="choose" class="choose_btn">
                 </div>
             </form>
         </div>

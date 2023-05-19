@@ -1,7 +1,13 @@
-import random
 
-random_start = ["computer", "player"]
-first = random.choice(random_start)
-print(first)
-random_start.remove(first)
-print(random_start[0])
+
+def falar_nome():
+    
+    print(name)
+
+
+def sla():
+    name = "Ester"
+    falar_nome()
+
+
+sla()

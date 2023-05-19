@@ -1,16 +1,38 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,  redirect, url_for
+
 import random
 
 from functions import game_logic, test_advantage, attack, test_who_won
-
 app = Flask(__name__)
-
-first, second = game_logic()
-test_advantage(first, second)
 
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+    global first_global
+    global second_global
+    if request.method == 'POST':
+        choice = []
+        choice.extend(*request.form.items())
+        player_choice = choice[0]
+
+        first_global, second_global = game_logic(player_choice)
+        test_advantage(first_global, second_global)
+
+        # app.config['battle_app'] = first, second
+        return redirect(url_for('battle_app'))
+    else:
+        return render_template(
+            'character.html'
+        )
+
+
+# first, second = app.config['battle_app']
+
+
+@app.route('/battle/', methods=["GET", "POST"])
+def battle_app():
+    first = first_global
+    second = second_global
     # Creating variables based on who's first and second
     if first.owner == "computer":
         computer = first
@@ -45,7 +67,10 @@ def index():
                 dialog_attack.append(msg)
 
         return render_template(
-            'index.html', computer=computer, player=player, dialog=dialog_attack
+            'index.html',
+            computer=computer,
+            player=player,
+            dialog=dialog_attack
         )
 
     # dialog = ["Computer TURN", "WATER GUN ATTACK", "Computer DAMAGE = 8"]
@@ -53,17 +78,6 @@ def index():
         'index.html', computer=computer, player=player, dialog=dialog_attack
     )
 
-
-@app.route('/battle/', methods=["GET", "POST"])
-def battle_app():
-    if request.method == 'POST':
-        return render_template(
-            'index.html'
-        )
-    else:
-        return render_template(
-            'character.html'
-        )
 
 if __name__ == "__main__":
     app.run(debug=True)

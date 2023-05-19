@@ -6,7 +6,7 @@ from pokemon_classes import Fire, Grass, Water
 def create_pokemon():
     """Creates the objects of pokemon"""
     bulbasaur = Grass("bulbasaur", 42, 9, 45)
-    charmander = Fire("charmander", 39, 10, 65)
+    charmander = Fire("charmander", 43, 10, 65)
     squirtle = Water("squirtle", 44, 8, 43)
     return bulbasaur, charmander, squirtle
 
@@ -36,7 +36,7 @@ def test_type_attack(attack_amount, attacker):
     if attack_amount == attacker.damage * 2:
         attack_type = f"{attacker.owner} HIT CRITICAL ATTACK"
     elif attack_amount == attacker.damage * 1.5:
-       attack_type = f"{attacker.owner} HAS ADVANTAGE MOVE"
+        attack_type = f"{attacker.owner} HAS ADVANTAGE MOVE"
     elif attack_amount == 0:
         attack_type = f"{attacker.owner} MISSED 😿"
     return attack_type
@@ -80,7 +80,7 @@ def test_who_won(first, second):
     return dialog
 
 
-def game_logic():
+def game_logic(player_choice):
     # Computer choice
     bulbasaur_comp, charmander_comp, squirtle_comp = create_pokemon()
     pokemon_list_computer = [bulbasaur_comp, charmander_comp, squirtle_comp]
@@ -89,8 +89,12 @@ def game_logic():
 
     # Person choice
     bulbasaur_player, charmander_player, squirtle_player = create_pokemon()
-    # pokemon_list_player = [bulbasaur_player, charmander_player, squirtle_player]
-    player = squirtle_player
+    if player_choice == "bulbasaur":
+        player = bulbasaur_player
+    elif player_choice == "charmander":
+        player = charmander_player
+    elif player_choice == "squirtle":
+        player = squirtle_player
     player.owner = "player"
 
     first, second = start_first(computer, player)
@@ -112,6 +116,3 @@ def test_advantage(first, second):
     else:
         first.advantage = True
         second.advantage = False
-
-
-game_logic()

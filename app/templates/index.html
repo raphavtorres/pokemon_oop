@@ -41,7 +41,7 @@
                     <p id="dialog_parag"></p>
                 </div>
                 <div id="buttons_div">
-                    <form action="/" method="POST">
+                    <form action="/battle/" method="POST">
                         {% for attack in player.type_attacks%}
                         <input type="submit" value="{{ attack }}" name="attack_btn">
                         {% endfor %}
