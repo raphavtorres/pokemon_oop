@@ -60,14 +60,14 @@ class Pokemon():
     def advantage(self, advantage):
         self._advantage = advantage
 
-    def attack(self, attack_name):
-        print(attack_name.upper(), "ATTACK")
+    def attack(self, attack_name, attacker):
+        dialog = f"{attacker.owner} GAVE AN {attack_name.upper()} ATTACK!"
         list_choice = [self._damage, self._damage * 2, 0]
         # 10% de chance de acertar crítico (dano dobrado)
         attack = random.choices(list_choice, weights=(0.8, 0.1, 0.1), k=1)[0]
         if self._advantage:
-            return attack * 1.5
-        return attack
+            return attack * 1.5, dialog
+        return attack, dialog
 
     # pokemon com vantagem ==> dobro de dano e perde meia vida apenas
     def loose_life(self, damage_received):

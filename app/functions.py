@@ -6,7 +6,7 @@ from pokemon_classes import Fire, Grass, Water
 def create_pokemon():
     """Creates the objects of pokemon"""
     bulbasaur = Grass("bulbasaur", 42, 9, 45)
-    charmander = Fire("charmander", 43, 10, 65)
+    charmander = Fire("charmander", 40, 10, 65)
     squirtle = Water("squirtle", 44, 8, 43)
     return bulbasaur, charmander, squirtle
 
@@ -57,11 +57,15 @@ def attack(attacker, attacked, attack_name):
     dialog_attack = []
     dialog_attack.append(f"{attacker.owner.upper()} ATTACKING!")
 
-    attack_amount = attacker.attack(attack_name)
+    attack_amount, dialog = attacker.attack(attack_name, attacker)
+    dialog_attack.append(dialog)
+
     attacked.loose_life(attack_amount)
     attack_type = test_type_attack(attack_amount, attacker)
     dialog_attack.append(attack_type)
-    dialog_attack.append(f"{attacker.owner.upper()} GAVE {attack_amount} OF DAMAGE!")
+    dialog_attack.append(
+        f"{attacker.owner.upper()} GAVE {attack_amount} OF DAMAGE!"
+        )
 
     dialog_attack = test_life_amount(attacker, attacked, dialog_attack)
 
